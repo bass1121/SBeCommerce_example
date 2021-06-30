@@ -4,7 +4,7 @@ import Details from "../details";
 import { FormInput, FormButton } from "../formFields";
 import history from "../../history";
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
     render() {
         const { className, handleSubmit } = this.props;
         const links=[
@@ -25,35 +25,53 @@ class SignInForm extends Component {
             }
         ]
         return (
-            <form onSubmit={handleSubmit} className={`${className } sign-in-form`} >
+            <form onSubmit={handleSubmit} className={`${className } sign-up-form`} >
                 
-                <Field className='sign-in-form__email' 
+                <Field className='sign-up-form__name' 
+                    name='name' 
+                    type='name'
+                    title='Name'
+                    placeholder='Name' 
+                    component={FormInput}/>
+                <Field className='sign-up-form__email' 
                     name='email' 
                     type='email'
                     title='Email'
                     placeholder='Email' 
                     component={FormInput}/>
-               <Field className='sign-in-form__password' 
+               <Field className='sign-up-form__password' 
                     name='password' 
                     type='password'
                     title='Password'
                     placeholder='Password' 
                     component={FormInput}/>
-                    <div className="sign-in-form__line"></div>
-                <Field className='sign-in-form__login'
+               <Field className='sign-up-form__confirm-password' 
+                    name='confirm' 
+                    type='password'
+                    title='Confirm Password'
+                    placeholder='Confirm Password' 
+                    component={FormInput}/>
+                    <div className="sign-up-form__line"></div>
+                <Field className='sign-up-form__login'
                     onClick={() => console.log('button success')} 
                     name='login' 
                     type='submit'
                     title='Login' 
                     component={FormButton}/>
-                <Details className='sign-in-form__details' title='QuickLinks' links={links}/>
+                <Field className='sign-up-form__back'
+                    onClick={() => console.log('button success')} 
+                    name='back' 
+                    type='button'
+                    title='Back' 
+                    component={FormButton}/>
+                <Details className='sign-up-form__details' title='QuickLinks' links={links}/>
             </form>
         );
     }
 }
 
-SignInForm = reduxForm({
-    form: 'SignInForm'
-})(SignInForm);
+SignUpForm = reduxForm({
+    form: 'SignUpForm'
+})(SignUpForm);
 
-export default SignInForm;
+export default SignUpForm;
