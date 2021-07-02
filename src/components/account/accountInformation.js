@@ -4,7 +4,7 @@ export default class AccountInformation extends Component {
     render() {
         return (
             <div>
-
+                account motherfuckin info
             </div>
         );
     }
