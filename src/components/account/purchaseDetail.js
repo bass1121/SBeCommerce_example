@@ -37,6 +37,8 @@ class PurchaseDetail extends Component {
                  className='purchase-detail__credit-card'
                  title='Credit Card'
                  value={creditCard}/>
+                 <div className="purchase-detail__track-shipment">Track Shipment</div>
+                 <div className="purchase-detail__print-receipt">Print Receipt</div>
             </div>
         )
     }
