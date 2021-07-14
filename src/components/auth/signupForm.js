@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-
 import { reduxForm, Field } from 'redux-form';
-
 import { FormInput, FormButton } from '../formFields';
 import Details from '../details';
-
 import history from '../../history';
-
 class SignUpForm extends Component {
     render() {
         const { className, handleSubmit } = this.props;
@@ -50,7 +46,6 @@ class SignUpForm extends Component {
                 placeholder='Confirm Password'
                 name='confirm'
                 component={FormInput}/>
-
                 <div className='sign-up-form__line'></div>
                 <Field className='sign-up-form__login'
                 onClick={() => history.push('/account')}
@@ -70,9 +65,7 @@ class SignUpForm extends Component {
         )
     }
 }
-
 SignUpForm = reduxForm({
     form: 'SignUpForm'
 })(SignUpForm);
-
 export default SignUpForm;
