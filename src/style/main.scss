@@ -17,9 +17,11 @@ body {
 @import 'page-title';
 @import 'form-fields';
 @import 'details';
+
 // AUTH 
 @import 'auth/signin';
 @import 'auth/signup';
+
 // ACCOUNT
 @import 'account/account';
 @import 'account/purchase-history';
@@ -28,5 +30,8 @@ body {
 // SHOP
 @import 'shop/shop';
 @import 'shop/shop-search-bar';
+@import "shop/shop-product.scss";
+
+// QUANTITY
 @import 'quantity';
 @import 'green-price-tag';
