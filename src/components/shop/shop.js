@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import ShopSearchBar from './shopSearchBar';
 import ShopProduct from './shopProduct';
+import CartButton from "./cartButton";
+import ShopCart from './shopCart';
 
 class Shop extends Component {
 
@@ -41,7 +43,7 @@ class Shop extends Component {
                         })
                     }
                 </div>
-                {/* shop cart button */}
+                <CartButton className='shop__cart-button' icon='fas fa-cart-plus'/>
             </div>
         )
     }
