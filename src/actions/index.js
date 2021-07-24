@@ -3,11 +3,11 @@ import {
     setNavbarLinks,
     changeNavbarActive
 } from './headernavbar';
-
 import {
     fetchUserPurchases,
     setPurchaseDetail,
-    fetchCartProducts
+    fetchCartProducts,
+    addCartProduct
 } from './user';
 
 import {
@@ -16,15 +16,14 @@ import {
     filterProductsWithCategoryId,
     filterProductsWithQuery
 } from './shop';
-
 export {
     setHeaderLinks,
     setNavbarLinks,
     changeNavbarActive,
-
     fetchUserPurchases,
     setPurchaseDetail,
     fetchCartProducts,
+    addCartProduct,
 
     fetchShopCategories,
     fetchShopProducts,
