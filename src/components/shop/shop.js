@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import ShopSearchBar from './shopSearchBar';
 import ShopProduct from './shopProduct';
-import CartButton from "./cartButton";
 import ShopCart from './shopCart';
-
 class Shop extends Component {
-
+    constructor() {
+        super()
+        this.state = {
+            showCart: true
+        }
+    }
     componentDidMount() {
         const headerLinks = [
             {
@@ -30,7 +33,9 @@ class Shop extends Component {
     onSubmit = (fields) => {
         this.props.filterProductsWithQuery(fields)
     }
+
     render() {
+        // return <ShopCart className='shop__cart'/>
         return (
             <div className='shop'>
                 <ShopSearchBar onSubmit={this.onSubmit} className='shop__search-bar'/>
@@ -43,7 +48,11 @@ class Shop extends Component {
                         })
                     }
                 </div>
-                <CartButton className='shop__cart-button' icon='fas fa-cart-plus'/>
+                {
+                    this.state.showCart ? <ShopCart className='shop__cart'/> : ''
+                }
+                
+                {/* shop cart button */}
             </div>
         )
     }
