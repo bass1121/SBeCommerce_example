@@ -17,21 +17,21 @@ body {
 @import 'page-title';
 @import 'form-fields';
 @import 'details';
-
 // AUTH 
 @import 'auth/signin';
 @import 'auth/signup';
-
 // ACCOUNT
 @import 'account/account';
 @import 'account/purchase-history';
 @import 'account/account-information';
-
 // SHOP
 @import 'shop/shop';
 @import 'shop/shop-search-bar';
-@import "shop/shop-product.scss";
-@import "shop/shop-cart.scss";
+@import 'shop/shop-product';
+
+// CART
+@import 'shop/shop-cart';
+@import 'shop/cart-product';
 
 // QUANTITY
 @import 'quantity';
