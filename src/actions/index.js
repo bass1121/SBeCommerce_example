@@ -16,6 +16,7 @@ import {
     filterProductsWithCategoryId,
     filterProductsWithQuery
 } from './shop';
+
 export {
     setHeaderLinks,
     setNavbarLinks,
