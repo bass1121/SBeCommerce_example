@@ -1,80 +1,117 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
-import ShopSearchBar from './shopSearchBar';
-import ShopProduct from './shopProduct';
-import ShopCart from './shopCart';
-import CartButton from './cartButton';
-
-class Shop extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            showCart: true
-        }
-    }
-    componentDidMount() {
-        const headerLinks = [
+import {
+    SET_SHOP_CATEGORIES,
+    SET_NAVBAR_LINKS,
+    SET_SHOP_PRODUCTS,
+    FILTER_PRODUCTS_WITH_CATEGORY_ID,
+    FILTER_PRODUCTS_WITH_QUERY
+} from './types';
+export function filterProductsWithQuery(fields) {
+    return ({
+        type: FILTER_PRODUCTS_WITH_QUERY,
+        payload: fields
+    })
+}
+export function filterProductsWithCategoryId(_id) {
+    return ({
+        type: FILTER_PRODUCTS_WITH_CATEGORY_ID,
+        payload: _id
+    })
+}
+export function fetchShopCategories() {
+    return ({
+        type: SET_SHOP_CATEGORIES,
+        payload: [
             {
                 _id: 0,
-                title: 'Login',
-                path: '/signin'
-            }
+                title: 'All'
+            },
+            {
+                _id: 1,
+                title: 'JavaScript'
+            },
+            {
+                _id: 2,
+                title: 'UI/UX'
+            },
+            {
+                _id: 3,
+                title: 'Linux'
+            },
+            {
+                _id: 4,
+                title: 'Python'
+            },
+            {
+                _id: 5,
+                title: 'UML'
+            },
+            {
+                _id: 6,
+                title: 'Ruby'
+            },
         ]
-        this.props.setHeaderLinks(headerLinks);
-        this.props.fetchShopCategories();
-        // filter products with links
-        this.props.fetchShopProducts();
-    }
-    shouldComponentUpdate(nextProps) {
-        if(this.props != nextProps) {
-            this.props.setNavbarLinks(nextProps.categories, (_id) => this.props.filterProductsWithCategoryId(_id));
-        }
-        return true
-    }
-    onSubmit = (fields) => {
-        this.props.filterProductsWithQuery(fields)
-    }
-
-    handleAddToCart = () => {
-        if(document.getElementById('shop-cart').classList.contains('cart-hidden')) {
-            document.getElementById('shop-cart').classList.remove('cart-hidden');
-        } else {
-            document.getElementById('shop-cart').classList.add('cart-hidden');
-        }
-    }
-
-
-    render() {
-        // return <ShopCart className='shop__cart'/>
-        return (
-            <div className='shop'>
-                <ShopSearchBar onSubmit={this.onSubmit} className='shop__search-bar'/>
-                <div className='shop__products'>
-                    {
-                        this.props.filteredProducts.map(product => {
-                            return (
-                                <ShopProduct {...product} key={product._id} />
-                            )
-                        })
-                    }
-                </div>
-                {
-                    this.state.showCart ? <ShopCart className='shop__cart'/> : ''
-                }
-
-                <CartButton onClick={this.handleAddToCart} className='shop__cart-button' icon='fas fa-cart-plus'/>
-            </div>
-        )
-    }
+    })
 }
-function mapStateToProps(state) {
-    const { categories, filteredProducts } = state.shop;
-    return {
-        categories,
-        filteredProducts
-    } 
+export function fetchShopProducts() {
+    return ({
+        type: SET_SHOP_PRODUCTS,
+        payload: [
+            {
+                _id: 0,
+                title: 'JavaScript in the Browser',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 1],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 1,
+                title: 'Graph Database',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 6],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 2,
+                title: 'Full Stack Development',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 1, 4],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 3,
+                title: 'User Interface Design',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 2],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 4,
+                title: 'JavaScript Development',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 1],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 5,
+                title: 'User Experience Design',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 2],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+            {
+                _id: 6,
+                title: 'Advanced OOP',
+                description: 'The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. ... The running speed starts slowly, but gets faster each minute after you hear this signal.',
+                price: 1.99,
+                belongsTo: [0, 6],
+                imageUrl: 'http://via.placeholder.com/80x80'
+            },
+        ]
+    })
 }
-Shop = connect(mapStateToProps, actions)(Shop);
-export default Shop;
