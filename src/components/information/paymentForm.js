@@ -4,11 +4,12 @@ import { FormInput, FormButton } from '../formFields';
 
 import history from '../../history';
 import OrderSummary from './orderSummary';
+import { UnderlinedTitle } from './infoHelp';
 
 class PaymentForm extends Component {
     render() {
         const { className, handleSubmit } = this.props;
-
+  
         return (
             <form onSubmit={handleSubmit} className={`${className} payment-form`}>
                 <Field className='payment-form__name'
@@ -23,7 +24,6 @@ class PaymentForm extends Component {
                 placeholder='____-____-____-____'
                 name='card'
                 component={FormInput}/>
-
                 <Field className='payment-form__expiration'
                 type='expiration'
                 title='Expiration Date'
@@ -36,7 +36,6 @@ class PaymentForm extends Component {
                 placeholder='CCV'
                 name='ccv'
                 component={FormInput}/>
-
                 <div className='payment-form__line'></div>
                 <Field className='payment-form__pay-complete'
                 onClick={() => history.push('/information/payment')}
@@ -52,6 +51,11 @@ class PaymentForm extends Component {
                 short={true}
                 component={FormButton}/>
                 <OrderSummary className='payment-form__order-summary'/>
+                <div className='payment-form__shipping-info shipping-info'>
+                    <UnderlinedTitle className='shipping-info__title' title='Shipping To'/>
+                    <div className='shipping-info__name small-text'>Jordan Hudgens</div>
+                    <div className='shipping-info__address small-text'>1234 address goes here</div>
+                </div>
             </form>
         )
     }
